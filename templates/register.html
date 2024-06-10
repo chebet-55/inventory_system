@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+{% block title %} register page {% endblock %}
+{% block content%}
+
+
+<section class="container1">
+    <div class="login-container">
+        <div class="circle circle-one"></div>
+        <div class="form-container">
+            <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png"
+                alt="illustration" class="illustration" />
+            <h1 class="opacity">register</h1>
+            <form action="/register" method="post">
+                <input name="name" type="text" placeholder=" ENTER YOUR NAME" style="color: black;"/><br>
+                <input name="email" type="email" placeholder="EMAIL" style="color: black;" /><br>
+                <input name="password" type="text" placeholder="PASSWORD"  style="color: black;" /><br>
+
+                <button type="submit" class="opacity">SIGN UP</button>
+            </form>
+            <div class="register-forget opacity">
+                <a href="/login" style="color:darkblue;">LOG IN</a><br>
+
+            </div>
+        </div>
+        <div class="circle circle-two"></div>
+    </div>
+    
+</section>
+{% endblock %}

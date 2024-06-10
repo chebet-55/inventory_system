@@ -1,0 +1,84 @@
+{% extends "base.html"%}
+{% block title %} my dashboard {% endblock %}
+{% block content%}
+
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class=" col-sm-12  col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <canvas id="bar-chart" width="800" height="450"></canvas><br>
+                <hr><br>
+            </div>
+        </div>
+
+        <div class=" col-sm-12  col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <canvas id="line-chart" width="800" height="450"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+    
+    new Chart(document.getElementById("bar-chart"), {
+        type: 'bar',
+        data: {
+            labels: {{ p_products | safe }},
+        datasets: [
+        {
+            label: "sales",
+            backgroundColor: ["#0000ff", "#8e5ea2", "#ff0000", "#56010c", "#000000"],
+            data: {{ v_products | safe}}
+                    },
+        {
+            label: "Profit (product)",
+            backgroundColor: ["#0000ff", "#8e5ea2", "#ff0000", "#56010c", "#000000"],
+            data: {{ value_profit | safe}}
+                    }
+    ]
+            },
+        options: {
+        legend: { display: false },
+        title: {
+            display: true,
+            text: 'profit per product'
+        }
+    }
+        });
+
+    new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+            labels: {{ p_profit | safe}},
+        datasets: [{
+            data: {{ products_profit | safe}},
+        label: "PROFITS",
+        borderColor: "#0000ff",
+        fill: false
+      },
+        {
+            data: {{ v_sales | safe}},
+        label: "SALES",
+        borderColor: "#ff0000",
+        fill: false
+      }
+    ]
+  },
+        options: {
+        title: {
+            display: true,
+            text: 'sales per day'
+        }
+    }
+});
+
+</script>
+
+
+
+
+{% endblock %}

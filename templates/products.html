@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %} my products{% endblock %}
+{% block content%}
+
+
+<!-- <h1>MY PRODUCTS</h1><br> -->
+<!-- Button trigger modal -->
+<button style="margin-left: 47%; margin-top: 1%;" type="button" class="btn btn-primary" data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop">
+    ADD PRODUCTS
+</button><br><br>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel" style="color:blue;"> product details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="background-color: cadetblue;">
+                <form action="/Add_products" method="post">
+                    <label for="products name"></label><br>
+                    <input type="text" name="product_name" placeholder="products_name" style="width: 50%; margin-left: 25%;"><br>
+                    <label for="buying price"></label><br>
+                    <input type="Number" name="buying_price" placeholder="buying_price" style="width: 50%; margin-left: 25%;"><br>
+                    <label for="selling price"></label><br>
+                    <input type="Number" name="selling_price" placeholder="selling_price" style="width: 50%; margin-left: 25%;"><br>
+                    <label for="stock quantity"></label><br>
+                    <input type="Number" name="stock_quantity" placeholder="stock_quantity" style="width: 50%; margin-left: 25%;"><br><br>
+                    <button type="SUBMIT" class="btn btn-primary" style="width: 30%; margin-left: 33%;" >Add products</button>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color:black;">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container-fluid" style="background-color:cornsilk;">
+    <table id="example" class="display compact" style="width:100%">
+        <thead>
+            <tr>
+                <th scope="">id</th>
+                <th>products name</th>
+                <th>buying price</th>
+                <th>selling price</th>
+                <th>stock quantity</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in prods %}
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+                <td>{{i[3]}}</td>
+                <td>{{i[4]}}</td>
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+{% endblock %}

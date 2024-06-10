@@ -1,0 +1,79 @@
+{% extends "base.html"%}
+{% block title %} sales page {% endblock %}
+{% block content %}
+
+
+<!-- Button trigger modal -->
+<button style="margin-left: 47%; margin-top: 1%;" type="button" class="btn btn-primary" data-bs-toggle="modal"
+    data-bs-target="#exampleModal">
+    ADD SALES
+</button><br><br>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel" style="color: blue;">Sales <details style="color: blue;"></details>
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="background-color: darkcyan;width: 100%;">
+                <form action="/Add_sales" method="post">
+
+                    <select name="product_id" id="product_id" style="margin-left: 40%; width: 17%;">
+                        {% for i in prods %}
+                        <option value="{{i[0]}}">{{i[1]}}</option>
+
+                        {% endfor %}
+                    </select><br>
+                    <label for="stock_quantity"></label><br>
+                    <input type="Number" name="stock_quantity" placeholder="stock_quantity" style="margin-left: 28% ;"><br><br>
+
+
+
+                    <button  type="submit" class="btn btn-primary" style="color: black; margin-left:37% ;"  >Add sales</button><br>
+
+
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: black;">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="background-color:cornsilk;">
+
+    <table id="example" class="display compact" style="width:100%">
+        <thead>
+
+            <tr>
+                <th>id</th>
+                <th>product id</th>
+                <th>stock quantity</th>
+                <th>created at</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for i in sale %}
+
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+                <td>{{i[3]}}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+
+
+    </table>
+</div>
+
+{% endblock %}

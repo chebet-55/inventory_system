@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %} login page {% endblock %}
+{% block content %}
+<style>
+    body{background-color:cornsilk;}
+</style>
+    <section class="container1" >
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="form-container">
+                <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png"
+                    alt="illustration" class="illustration" />
+                <h1 class="opacity">LOGIN</h1>
+                <form action="/login", method="post">
+                    <input name="email" type="text" placeholder="ENTER YOUR EMAIL" style="color: black;" />
+                    <input name="password" type="password" placeholder="PASSWORD" style="color: black;" /><br>
+                    <!-- <button>SUBMIT</button><br><br> -->
+                    <button class="opacity"  style="color:white;">LOG IN</button><br>
+                </form>
+                <!-- <div class="register-forget opacity"> -->
+
+                <a href="/register" style="color: aliceblue;">REGISTER</a><br><br>
+                <a href="#" style="color: aliceblue;">FORGOT PASSWORD</a><br>
+            </div>
+        </div>
+        <div class="circle circle-two"></div>
+        </div>
+        <div class="theme-btn-container"></div>
+    </section>
+
+{% endblock %}
